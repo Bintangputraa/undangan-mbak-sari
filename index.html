@@ -2564,8 +2564,10 @@
 											data-settings='{"_animation":"fadeInUp","_animation_delay":1000}'
 											data-widget_type="heading.default">
 											<div class="elementor-widget-container">
-												<h2 class="elementor-heading-title elementor-size-default">Kepada
-													Yth.<br />Bapak/Ibu/Saudara/i</h2>
+												<h2 class="elementor-heading-title elementor-size-default">
+													Kepada Yth.<br /><span id="namaTamu">Bapak/Ibu/Saudara/i</span>
+												</h2>
+
 											</div>
 										</div>
 										<div class="elementor-element elementor-element-e754120 animated-slow elementor-widget elementor-widget-heading animated fadeInUp"
@@ -5406,16 +5408,34 @@
 			border-radius: 8px;
 			margin-top: 1rem;
 		}
-	
+
 		.comment-nama {
 			font-weight: bold;
 			margin-bottom: 0.5rem;
 		}
-	
+
 		.comment-ucapan {
 			margin: 0;
 		}
 	</style>
+
+
+<script>
+  // Ambil parameter nama tamu dari URL
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  // Tampilkan nama tamu di elemen #namaTamu
+  document.addEventListener("DOMContentLoaded", function () {
+    const namaTamu = getQueryParam("to");
+    if (namaTamu) {
+      const container = document.getElementById("namaTamu");
+      container.textContent = decodeURIComponent(namaTamu);
+    }
+  });
+</script>
 
 </body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
 
